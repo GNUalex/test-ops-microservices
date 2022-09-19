@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: test-ops-microservices
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: gnualex/nginx-test:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        env:
+          - name: JENKINS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: nginx-config
+                key: token
+                optional: false

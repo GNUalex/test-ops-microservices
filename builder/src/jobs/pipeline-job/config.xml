@@ -1,0 +1,22 @@
+<flow-definition plugin="workflow-job@1232.v5a_4c994312f1">
+<actions/>
+<description>Pipeline job</description>
+<keepDependencies>false</keepDependencies>
+<properties>
+<jenkins.model.BuildDiscarderProperty>
+<strategy class="hudson.tasks.LogRotator">
+<daysToKeep>-1</daysToKeep>
+<numToKeep>25</numToKeep>
+<artifactDaysToKeep>-1</artifactDaysToKeep>
+<artifactNumToKeep>-1</artifactNumToKeep>
+</strategy>
+</jenkins.model.BuildDiscarderProperty>
+</properties>
+<definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2759.v87459c4eea_ca_">
+<script>node { stage('Preparation') { echo "Preparation stage" }; stage('Build') { echo "Build stage" }; stage('Deploy') { echo "Deploy stage" }; } </script>
+<sandbox>true</sandbox>
+</definition>
+<triggers/>
+<authToken>123456789</authToken>
+<disabled>false</disabled>
+</flow-definition>
